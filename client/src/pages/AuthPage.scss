@@ -1,0 +1,23 @@
+.btn {
+  margin-right: 10px !important;
+}
+
+input.custom-input {
+  border-bottom: 1px solid #fff !important;
+  box-shadow: 0 1px 0 0 #fff !important;
+}
+
+input.custom-input + label {
+  color: #fff !important;
+}
+
+input.custom-input:focus + label {
+  color: #ffeb81 !important;
+}
+
+input.custom-input:focus {
+  background-color: transparent!important;
+  border-bottom: 1px solid #ffeb81 !important;
+  box-shadow: 0 1px 0 0 #ffeb81 !important;
+}
+
