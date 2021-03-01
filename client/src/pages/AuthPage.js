@@ -1,9 +1,11 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import useHttp from '../hooks/http.hook';
 import './AuthPage.scss';
 import useMessage from '../hooks/message.hook';
+import AuthContext from '../context/AuthContext';
 
 const AuthPage = () => {
+  const auth = useContext(AuthContext);
   const message = useMessage();
   const {
     loading, request, error, clearError,
@@ -20,14 +22,26 @@ const AuthPage = () => {
     clearError();
   }, [error, message, clearError]);
 
+  useEffect(() => {
+    window.M.updateTextFields();
+  }, []);
+
   const changeHandler = (event) => {
-    setForm({...form, [event.target.name]: event.target.value});
+    setForm({ ...form, [event.target.name]: event.target.value });
   };
 
   const registerHandler = async () => {
     try {
-      const data = await request('/api/auth/register', 'POST', {...form});
+      const data = await request('/api/auth/register', 'POST', { ...form });
       message(data.message);
+    } catch (e) {
+    }
+  };
+
+  const loginHandler = async () => {
+    try {
+      const data = await request('/api/auth/login', 'POST', { ...form });
+      auth.login(data.token, data.userId);
     } catch (e) {
     }
   };
@@ -66,6 +80,7 @@ const AuthPage = () => {
             <button
               className="btn green lighten-2"
               title="Log In"
+              onClick={loginHandler}
               disabled={loading}
             >
               Log in
