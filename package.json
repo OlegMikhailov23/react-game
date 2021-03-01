@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rolling-scopes-school/olegmikhailov23-REACT2021Q1.git"
+    "url": "https://github.com/OlegMikhailov23/react-game.git"
   },
   "keywords": [
     "mern",
@@ -21,9 +21,9 @@
   "author": "Oleg Mikhaylov <dkfolkin@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rolling-scopes-school/olegmikhailov23-REACT2021Q1/issues"
+    "url": "https://github.com/OlegMikhailov23/react-game/issues"
   },
-  "homepage": "https://github.com/rolling-scopes-school/olegmikhailov23-REACT2021Q1#readme",
+  "homepage": "https://github.com/OlegMikhailov23/react-game#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "config": "^3.3.3",

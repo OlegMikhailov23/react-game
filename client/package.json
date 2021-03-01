@@ -1,7 +1,7 @@
 {
-  "name": "react-boiler-plate",
+  "name": "react-game",
   "version": "1.0.0",
-  "description": "Application for monitoring the spread of covid-19",
+  "description": "webpack + react",
   "main": "index.js",
   "scripts": {
     "test": "npm run eslint",
@@ -12,9 +12,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/OlegMikhailov23/covid-dashboard"
+    "url": "https://github.com/OlegMikhailov23/react-game"
   },
-  "author": "Team",
+  "author": "Oleg Mikhaylov <dkfolkin@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.13.1",
