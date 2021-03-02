@@ -11,6 +11,7 @@
 
 .gameboard__title {
   width: 100%;
+  margin-bottom: 1%;
   text-align: center;
 }
 
@@ -46,7 +47,7 @@
   background-size: 100% 100%;
 }
 
-.preloader-wrapper {
+.preloader-wrapper-custom {
   width: 200px!important;
   height: 200px!important;
 }

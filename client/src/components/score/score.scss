@@ -1,0 +1,27 @@
+@import '../../sass/variables';
+
+.score-wrapper {
+  margin-bottom: 2%;
+  margin: 0 auto;
+}
+
+.score-container {
+  padding: 1%;
+  border: 2px solid #ffffff;
+  width: 40%;
+  margin: 0 auto;
+}
+
+.score-wrapper p {
+  font-size: 1rem;
+  & span {
+    font-weight: 700;
+    font-size: 1.3rem;
+  }
+}
+
+@media ($mobile-widths) {
+  .score-container {
+    width: 90%;
+  }
+}

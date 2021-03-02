@@ -6,7 +6,7 @@ import 'materialize-css';
 import './sass/style.scss';
 import useAuth from './hooks/auth.hook';
 import AuthContext from './context/AuthContext';
-import Navbar from './components/Navbar';
+import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
 
 const App = () => {

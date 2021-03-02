@@ -1,0 +1,32 @@
+@import '../../sass/variables';
+
+.statistic-wrapper {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 70%;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin: 0 auto;
+}
+
+.statistic-wrapper td{
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-top: 1px solid #fcfcfc;
+}
+
+.preloader-wrapper-statistic {
+  position: relative;
+  top: 200px!important;
+  width: 100px!important;
+  height: 100px!important;
+}
+
+@media ($mobile-widths) {
+  .statistic-wrapper {
+    min-height: 70vh;
+    width: 100%;
+  }
+}
+
+

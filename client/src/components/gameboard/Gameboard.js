@@ -6,6 +6,7 @@ import '../../assets/img/old-paper.svg';
 import Score from '../score/Score';
 import useHttp from '../../hooks/http.hook';
 import AuthContext from '../../context/AuthContext';
+import useMessage from '../../hooks/message.hook';
 
 const getRandomNumber = (min, max) => {
   const rand = min + Math.random() * (max + 1 - min);
@@ -15,14 +16,15 @@ const getRandomNumber = (min, max) => {
 const Gameboard = () => {
   const chips = ['rock', 'paper', 'scissor'];
   const { token } = useContext(AuthContext);
+  const message = useMessage();
 
   const [isChoose, setGameType] = useState(false);
   const [myChoice, setMyChoice] = useState(null);
   const [enemyThinking, setEnemyThinking] = useState(true);
   const [enemyChoice, setEnemyChoice] = useState(null);
-  const [winTimes, setWintimes] = useState('');
-  const [loseTimes, setLosetimes] = useState('');
-  const { loading, request } = useHttp();
+  const [winTimes, setWintimes] = useState(null);
+  const [loseTimes, setLosetimes] = useState(null);
+  const { request } = useHttp();
 
   const getWins = useCallback(
     async () => {
@@ -49,15 +51,40 @@ const Gameboard = () => {
     getWins();
   }, []);
 
+  const countScoreHandler = (userChoice, iiChoice) => {
+    if (userChoice === 'paper' && iiChoice === 'rock') {
+      setWintimes(winTimes + 1);
+    } else if (userChoice === 'paper' && iiChoice === 'scissor') {
+      setLosetimes(loseTimes + 1);
+      message('Holy 💩, try another time!');
+    } else if (userChoice === 'scissor' && iiChoice === 'paper') {
+      message('Hooray, u are lucky man! 😁');
+      setWintimes(winTimes + 1);
+      message('Hooray, u are lucky man! 😁');
+    } else if (userChoice === 'scissor' && iiChoice === 'rock') {
+      message('Holy 💩, try another time!');
+      setLosetimes(loseTimes + 1);
+    } else if (userChoice === 'rock' && iiChoice === 'paper') {
+      message('Holy 💩, try another time!');
+      setLosetimes(loseTimes + 1);
+    } else if (userChoice === 'rock' && iiChoice === 'scissor') {
+      message('Hooray, u are lucky man! 😁');
+      setWintimes(winTimes + 1);
+    }
+  };
+
   const chooseHandler = async (e) => {
     setGameType(true);
     setMyChoice(e.target.id);
     setTimeout(() => {
       setEnemyChoice(chips[getRandomNumber(0, chips.length - 1)]);
       setEnemyThinking(false);
-      setWintimes(winTimes + 1);
     }, 3000);
   };
+
+  useEffect(() => {
+    countScoreHandler(myChoice, enemyChoice);
+  }, [enemyChoice]);
 
   const retryHandler = () => {
     setGameType(false);
@@ -65,10 +92,6 @@ const Gameboard = () => {
     setEnemyThinking(true);
     setEnemyChoice(null);
     sendResult();
-  };
-
-  const countScoreHandler = (user, myChoice, enemyChice) => {
-    console.log(user);
   };
 
   if (!isChoose) {
@@ -97,7 +120,7 @@ const Gameboard = () => {
       </div>
 
       {enemyThinking
-      && <div className="preloader-wrapper big active">
+      && <div className="preloader-wrapper preloader-wrapper-custom  big active">
         <div className="spinner-layer spinner-blue-only">
           <div className="circle-clipper left">
             <div className="circle"></div>

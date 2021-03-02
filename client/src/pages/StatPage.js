@@ -1,10 +1,9 @@
 import React from 'react';
+import Statistic from '../components/statistic/Statistic';
 
 const StatPage = () => (
   <div>
-    <h1>
-      Statistic Page
-    </h1>
+      <Statistic></Statistic>
   </div>
 );
 

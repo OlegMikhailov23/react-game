@@ -1,0 +1,33 @@
+@import '../../sass/variables';
+
+.nav-wrapper {
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+.main-logo {
+  display: inline-block;
+  width: 45px;
+  height: 45px;
+  font-size: 0;
+  background-image: url("../../assets/img/logo.png");
+  background-size: 100% 100%;
+}
+
+.nav-wrapper a {
+  font-size: 1.5rem;
+}
+
+.sidenav a {
+  font-size: 1.5rem!important;
+}
+
+
+
+@media ($mobile-widths) {
+  .main-logo{
+    position: relative;
+    left: calc(50% - 65px);
+  }
+}
+

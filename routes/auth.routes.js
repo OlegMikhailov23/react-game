@@ -118,20 +118,19 @@ router.post('/win', auth, async (req, res) => {
         user.win = win;
         user.lose = lose;
         await user.save();
-        // await User.save(win);
         res.status(201);
-        // if (user) {
-        //     User.win = win;
-        //     User.lose = lose;
-        //     await User.save();
-        // }
-        // const user = await User.findOne(req.userId);
-        // res.json({
-        //     win:user.win,
-        //     lose: user.lose})
-        // console.log(user.win, user.lose)
     } catch (e) {
         res.status(500).json({message: 'Oops, something goes wrong'});
+    }
+})
+
+router.get('/statistic', auth, async (req, res) => {
+    try {
+        const user = await User.find();
+        console.log(user, 'TEST')
+        res.json(user);
+    } catch (e) {
+        res.status(500).json({message: 'Oops, something goes wrong, Fuck'});
     }
 })
 
