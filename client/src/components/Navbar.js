@@ -20,7 +20,7 @@ const Navbar = () => {
   return (
     <>
       <nav>
-        <div className="nav-wrapper blue-grey">
+        <div className="nav-wrapper grey darken-3">
           <a href="#!" className="brand-logo">Logo</a>
           <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
           <ul className="right hide-on-med-and-down">

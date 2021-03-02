@@ -49,8 +49,8 @@ const AuthPage = () => {
   return (
     <div className="row">
       <div className="col s12 l6 offset-l3">
-        <h1>Lets play rock-paper-scissors?</h1>
-        <div className="card blue lighten-1">
+        <h1 className="white-text">Lets play rock-paper-scissors?</h1>
+        <div className="card grey darken-3">
           <div className="card-content white-text row">
             <span className="card-title">Please, login or signin</span>
             <div className="input-field col l6">

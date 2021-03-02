@@ -1,0 +1,75 @@
+@import '../../sass/variables';
+
+.gameboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-content: space-around;
+  align-content: center;
+  margin-bottom: 50px;
+}
+
+.gameboard__title {
+  width: 100%;
+  text-align: center;
+}
+
+.game-chip {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 1%;
+  border-radius: 50%;
+  background-color: $btn-bg;
+  border: 5px solid #ed4679;
+  font-size: 0;
+  cursor: pointer;
+  background-size: 100% 100%;
+  transition: 0.2s ease-in-out;
+  &:hover {
+    border-color: aquamarine;
+    box-shadow: 0 5px 4px #000000;
+  }
+
+}
+
+.game-chip.scissor {
+  background-image: url("../../assets/img/scissor.svg");
+}
+
+.game-chip.rock {
+  background-image: url("../../assets/img/cave-painting.svg");
+  background-size: 100% 100%;
+}
+
+.game-chip.paper {
+  background-image: url("../../assets/img/old-paper.svg");
+  background-size: 100% 100%;
+}
+
+.preloader-wrapper {
+  width: 200px!important;
+  height: 200px!important;
+}
+
+.button-wrapper {
+  min-width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.score-wrapper {
+  width: 100%;
+}
+
+@media ($mobile-widths) {
+  .game-board {
+    flex-direction: column;
+  }
+
+  .button-wrapper {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+}

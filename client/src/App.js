@@ -7,7 +7,7 @@ import './sass/style.scss';
 import useAuth from './hooks/auth.hook';
 import AuthContext from './context/AuthContext';
 import Navbar from './components/Navbar';
-import Footer from './components/footer';
+import Footer from './components/footer/Footer';
 
 const App = () => {
   const {

@@ -23,7 +23,8 @@ body {
   font-size: $main-font-size;
   line-height: $main-line-height;
   color: $main-font-color;
-  background-size: 100% 100%;
+  background-size: 50px 50px;
+  background-image: url("../assets/img/rock-paper-scissors.svg");
 }
 
 *,

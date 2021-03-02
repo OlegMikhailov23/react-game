@@ -1,10 +1,9 @@
 import React from 'react';
+import Gameboard from '../components/gameboard/Gameboard';
 
 const GamePage = () => (
   <div>
-    <h1>
-      Game Page
-    </h1>
+  <Gameboard/>
   </div>
 );
 

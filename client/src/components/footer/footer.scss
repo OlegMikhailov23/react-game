@@ -1,0 +1,14 @@
+@import '../../sass/variables';
+
+.page-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+@media ($mobile-widths) {
+  .page-footer {
+    position: relative;
+  }
+}

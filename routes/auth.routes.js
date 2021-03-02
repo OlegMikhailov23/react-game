@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const {check, validationResult} = require('express-validator');
+const auth = require('../middleware/auth.midlleware');
 const User = require('../models/User');
 const router = Router();
 
@@ -93,5 +94,45 @@ router.post(
             res.status(500).json({message: 'Oops, something goes wrong, try again later'});
         }
     })
+
+// /api/auth/win
+
+router.get('/win', auth, async (req, res) => {
+    try {
+        const user = await User.findOne({_id: req.user.userId});
+        console.log(user)
+        res.json({
+            win: user.win,
+            lose: user.lose})
+    } catch (e) {
+        res.status(500).json({message: 'Oops, something goes wrong, Fuck'});
+    }
+})
+
+// router.post('/win', auth, async (req, res) => {
+//     try {
+//         const baseUrl = config.get('baseUrl');
+//         const {win, lose} = req.body;
+//         const user = await User.findOne(req.userId);
+//         console.log(win, lose);
+//         user.win = win;
+//         user.lose = lose;
+//         await user.save();
+//         // await User.save(win);
+//         res.status(201);
+//         // if (user) {
+//         //     User.win = win;
+//         //     User.lose = lose;
+//         //     await User.save();
+//         // }
+//         // const user = await User.findOne(req.userId);
+//         // res.json({
+//         //     win:user.win,
+//         //     lose: user.lose})
+//         // console.log(user.win, user.lose)
+//     } catch (e) {
+//         res.status(500).json({message: 'Oops, something goes wrong'});
+//     }
+// })
 
 module.exports = router

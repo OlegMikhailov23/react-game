@@ -1,6 +1,7 @@
 import { NavLink, useHistory } from 'react-router-dom';
 import React, { useContext } from 'react';
-import AuthContext from '../context/AuthContext';
+import AuthContext from '../../context/AuthContext';
+import './footer.scss';
 
 const Footer = () => {
   const history = useHistory();
@@ -14,7 +15,7 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="page-footer">
+      <footer className="page-footer grey darken-3">
         <div className="container">
           <div className="row">
             <div className="col l6 s12">
