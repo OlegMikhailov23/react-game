@@ -109,30 +109,30 @@ router.get('/win', auth, async (req, res) => {
     }
 })
 
-// router.post('/win', auth, async (req, res) => {
-//     try {
-//         const baseUrl = config.get('baseUrl');
-//         const {win, lose} = req.body;
-//         const user = await User.findOne(req.userId);
-//         console.log(win, lose);
-//         user.win = win;
-//         user.lose = lose;
-//         await user.save();
-//         // await User.save(win);
-//         res.status(201);
-//         // if (user) {
-//         //     User.win = win;
-//         //     User.lose = lose;
-//         //     await User.save();
-//         // }
-//         // const user = await User.findOne(req.userId);
-//         // res.json({
-//         //     win:user.win,
-//         //     lose: user.lose})
-//         // console.log(user.win, user.lose)
-//     } catch (e) {
-//         res.status(500).json({message: 'Oops, something goes wrong'});
-//     }
-// })
+router.post('/win', auth, async (req, res) => {
+    try {
+        const baseUrl = config.get('baseUrl');
+        const {win, lose} = req.body;
+        const user = await User.findOne({_id: req.user.userId});
+        console.log(win, lose);
+        user.win = win;
+        user.lose = lose;
+        await user.save();
+        // await User.save(win);
+        res.status(201);
+        // if (user) {
+        //     User.win = win;
+        //     User.lose = lose;
+        //     await User.save();
+        // }
+        // const user = await User.findOne(req.userId);
+        // res.json({
+        //     win:user.win,
+        //     lose: user.lose})
+        // console.log(user.win, user.lose)
+    } catch (e) {
+        res.status(500).json({message: 'Oops, something goes wrong'});
+    }
+})
 
 module.exports = router

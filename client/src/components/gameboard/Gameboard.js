@@ -1,4 +1,6 @@
-import React, { useState, useCallback, useContext } from 'react';
+import React, {
+  useState, useCallback, useContext, useEffect,
+} from 'react';
 import './gameboard.scss';
 import '../../assets/img/old-paper.svg';
 import Score from '../score/Score';
@@ -35,22 +37,25 @@ const Gameboard = () => {
     [token, request],
   );
 
-  // const sendResult = async () => {
-  //   try {
-  //     const data = await request('/api/auth/win', 'POST', { win: winTimes, lose: loseTimes }, {
-  //       Authorization: `Bearer ${auth.token}`,
-  //     });
-  //     console.log(data);
-  //   } catch (e) {}
-  // };
+  const sendResult = async () => {
+    try {
+      await request('/api/auth/win', 'POST', { win: winTimes, lose: loseTimes }, {
+        Authorization: `Bearer ${token}`,
+      });
+    } catch (e) {}
+  };
 
-  const chooseHandler = (e) => {
+  useEffect(() => {
+    getWins();
+  }, []);
+
+  const chooseHandler = async (e) => {
     setGameType(true);
     setMyChoice(e.target.id);
     setTimeout(() => {
       setEnemyChoice(chips[getRandomNumber(0, chips.length - 1)]);
       setEnemyThinking(false);
-      getWins();
+      setWintimes(winTimes + 1);
     }, 3000);
   };
 
@@ -59,6 +64,7 @@ const Gameboard = () => {
     setMyChoice(null);
     setEnemyThinking(true);
     setEnemyChoice(null);
+    sendResult();
   };
 
   const countScoreHandler = (user, myChoice, enemyChice) => {
