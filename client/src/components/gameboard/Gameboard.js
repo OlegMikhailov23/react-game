@@ -244,7 +244,7 @@ const Gameboard = () => {
   if (!isChoose) {
     return (
       <div className="gameboard">
-        <button className={musicButtonClass} onClick={musicHandler} title="music On/Off"><i className="material-icons">surround_sound</i></button>
+        <button className={musicButtonClass} onClick={musicHandler} title="music On/Off"><i className="material-icons">library_music</i></button>
         <button className={soundButtonClass} onClick={soundHandler} title="sound On/Off"><i className="material-icons">surround_sound</i></button>
         <h1 className="gameboard__title white-text">Choose your weapon</h1>
         {chips.map((chip, index) => (
@@ -261,7 +261,7 @@ const Gameboard = () => {
   if (isChoose) {
     return (
       <div className="gameboard">
-        <button className={musicButtonClass} onClick={musicHandler} title="music On/Off"><i className="material-icons">surround_sound</i></button>
+        <button className={musicButtonClass} onClick={musicHandler} title="music On/Off"><i className="material-icons">library_music</i></button>
         <button className={soundButtonClass} onClick={soundHandler} title="sound On/Off"><i className="material-icons">surround_sound</i></button>
         <h1 className="gameboard__title white-text">Let`s test your luck:)</h1>
         <div className={`game-chip ${myChoice}`}
