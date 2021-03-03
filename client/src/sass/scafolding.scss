@@ -27,6 +27,19 @@ body {
   background-image: url("../assets/img/rock-paper-scissors.svg");
 }
 
+.day {
+  background-color: transparent;
+}
+
+.night {
+  background-color: #212121;
+}
+
+.night-shift {
+  width: 50px!important;
+  height: 50px!important;
+}
+
 *,
 *::before,
 *::after {

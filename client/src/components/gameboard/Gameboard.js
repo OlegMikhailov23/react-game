@@ -14,6 +14,7 @@ import failureSound from '../../assets/sound/failure.mp3';
 import successSound from '../../assets/sound/success.mp3';
 import chooseSound from '../../assets/sound/swap.mp3';
 import clickSound from '../../assets/sound/click.mp3';
+import musicSound from '../../assets/sound/3.mp3';
 
 const getRandomNumber = (min, max) => {
   const rand = min + Math.random() * (max + 1 - min);
@@ -29,9 +30,12 @@ const Gameboard = () => {
   const [playSuccess] = useSound(successSound);
   const [playChoose] = useSound(chooseSound);
   const [playClick] = useSound(clickSound);
+  const [playMusic, { stop }] = useSound(musicSound);
 
   const [soundButtonClass, setSoundButtonClass] = useState('sound-switcher red lighten-2 btn');
+  const [musicButtonClass, setMusicButtonClass] = useState('music-switcher red lighten-2 btn');
   const [isSound, setSound] = useState(false);
+  const [isMusic, setMusic] = useState(false);
   const [isChoose, setGameType] = useState(false);
   const [myChoice, setMyChoice] = useState(null);
   const [enemyThinking, setEnemyThinking] = useState(true);
@@ -45,6 +49,17 @@ const Gameboard = () => {
       playClick();
     }
     setSound(!isSound);
+    document.removeEventListener('keydown', pressSoundHandler, false);
+  };
+
+  const musicHandler = () => {
+    setMusic(!isMusic);
+    if (isMusic) {
+      stop();
+    } else {
+      playMusic();
+    }
+    document.removeEventListener('keydown', pressMusicHandler, false);
   };
 
   useEffect(() => {
@@ -56,6 +71,16 @@ const Gameboard = () => {
       message('Sound off 🙉');
     }
   }, [isSound]);
+
+  useEffect(() => {
+    if (isMusic) {
+      setMusicButtonClass('music-switcher red lighten-2 btn');
+      message('Music on 🎺');
+    } else {
+      setMusicButtonClass('music-switcher green lighten-2 btn');
+      message('Music off 🙉');
+    }
+  }, [isMusic]);
 
   const getWins = useCallback(
     async () => {
@@ -152,6 +177,7 @@ const Gameboard = () => {
       playClick();
     }
     sendResult();
+    document.removeEventListener('keydown', pressRetryHandler, false);
   };
 
   const pressHandler = useCallback((e) => {
@@ -167,6 +193,24 @@ const Gameboard = () => {
     }
   }, []);
 
+  const pressRetryHandler = useCallback((e) => {
+    if (e.key === 'r') {
+      retryHandler();
+    }
+  }, []);
+
+  const pressSoundHandler = useCallback((e) => {
+    if (e.key === 'e') {
+      soundHandler();
+    }
+  }, [isSound]);
+
+  const pressMusicHandler = useCallback((e) => {
+    if (e.key === 'w') {
+      musicHandler();
+    }
+  }, [isMusic]);
+
   useEffect(() => {
     document.addEventListener('keydown', pressHandler, false);
 
@@ -175,9 +219,32 @@ const Gameboard = () => {
     };
   }, [myChoice]);
 
+  useEffect(() => {
+    document.addEventListener('keydown', pressRetryHandler, false);
+
+    return () => {
+      document.removeEventListener('keydown', pressRetryHandler, false);
+    };
+  }, [enemyChoice]);
+
+  useEffect(() => {
+    document.addEventListener('keydown', pressSoundHandler, false);
+    return () => {
+      document.removeEventListener('keydown', pressSoundHandler, false);
+    };
+  }, [isSound]);
+
+  useEffect(() => {
+    document.addEventListener('keydown', pressMusicHandler, false);
+    // return () => {
+    //   document.removeEventListener('keydown', pressMusicHandler, false);
+    // };
+  }, [isMusic]);
+
   if (!isChoose) {
     return (
       <div className="gameboard">
+        <button className={musicButtonClass} onClick={musicHandler} title="music On/Off"><i className="material-icons">surround_sound</i></button>
         <button className={soundButtonClass} onClick={soundHandler} title="sound On/Off"><i className="material-icons">surround_sound</i></button>
         <h1 className="gameboard__title white-text">Choose your weapon</h1>
         {chips.map((chip, index) => (
@@ -194,6 +261,7 @@ const Gameboard = () => {
   if (isChoose) {
     return (
       <div className="gameboard">
+        <button className={musicButtonClass} onClick={musicHandler} title="music On/Off"><i className="material-icons">surround_sound</i></button>
         <button className={soundButtonClass} onClick={soundHandler} title="sound On/Off"><i className="material-icons">surround_sound</i></button>
         <h1 className="gameboard__title white-text">Let`s test your luck:)</h1>
         <div className={`game-chip ${myChoice}`}

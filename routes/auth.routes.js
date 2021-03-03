@@ -114,7 +114,6 @@ router.post('/win', auth, async (req, res) => {
         const baseUrl = config.get('baseUrl');
         const {win, lose} = req.body;
         const user = await User.findOne({_id: req.user.userId});
-        console.log(win, lose);
         user.win = win;
         user.lose = lose;
         await user.save();
@@ -127,7 +126,6 @@ router.post('/win', auth, async (req, res) => {
 router.get('/statistic', auth, async (req, res) => {
     try {
         const user = await User.find();
-        console.log(user, 'TEST')
         res.json(user);
     } catch (e) {
         res.status(500).json({message: 'Oops, something goes wrong, Fuck'});
