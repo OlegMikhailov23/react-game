@@ -1,15 +1,16 @@
 @import '../../sass/variables';
 
 .score-wrapper {
-  margin-bottom: 2%;
   margin: 0 auto;
-}
+  margin-top: 5%;
+ }
 
 .score-container {
   padding: 1%;
   border: 2px solid #ffffff;
   width: 40%;
   margin: 0 auto;
+  backdrop-filter: blur(1px) saturate(150%);
 }
 
 .score-wrapper p {

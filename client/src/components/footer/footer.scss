@@ -7,6 +7,38 @@
   width: 100%;
 }
 
+.footer-logo {
+  display: block;
+  width: 120px;
+  height: 120px;
+  background-image: url("../../assets/img/rs_school_js.svg");
+  background-size: 100% 100%;
+}
+
+.footer-links li {
+  margin-bottom: 10px !important;
+
+  & a {
+    color: #ffffff;
+  }
+
+  & a:hover {
+    transition: 0.2s ease-in-out;
+    color: #cccccc;
+  }
+}
+
+  .footer-copyright {
+    & a {
+      color: #ffffff;
+    }
+
+    & a:hover {
+      transition: 0.2s ease-in-out;
+      color: #cccccc;
+    }
+  }
+
 @media ($mobile-widths) {
   .page-footer {
     position: relative;
