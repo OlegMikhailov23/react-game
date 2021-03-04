@@ -236,9 +236,9 @@ const Gameboard = () => {
 
   useEffect(() => {
     document.addEventListener('keydown', pressMusicHandler, false);
-    // return () => {
-    //   document.removeEventListener('keydown', pressMusicHandler, false);
-    // };
+    return () => {
+      document.removeEventListener('keydown', pressMusicHandler, false);
+    };
   }, [isMusic]);
 
   if (!isChoose) {

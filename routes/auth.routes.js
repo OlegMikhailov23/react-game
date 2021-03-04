@@ -100,7 +100,6 @@ router.post(
 router.get('/win', auth, async (req, res) => {
     try {
         const user = await User.findOne({_id: req.user.userId});
-        console.log(user)
         res.json({
             win: user.win,
             lose: user.lose})
