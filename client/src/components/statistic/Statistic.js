@@ -12,12 +12,13 @@ const Statistic = () => {
   const getUsers = useCallback(
     async () => {
       try {
+        // eslint-disable-next-line no-shadow
         const data = await request('/api/auth/statistic', 'GET', null, {
           Authorization: `Bearer ${token}`,
         });
-        console.log(data);
         data.sort((a, b) => b.win - a.win);
         setData(data);
+        // eslint-disable-next-line no-empty
       } catch (e) {
       }
     },

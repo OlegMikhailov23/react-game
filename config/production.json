@@ -1,0 +1,6 @@
+{
+  "port": 8000,
+  "jwtSecret": "gevurt zitron",
+  "mongoUri": "mongodb+srv://dkfolkin:aSww26xElLsj5xId@cluster0.bibyi.mongodb.net/game?retryWrites=true&w=majority",
+  "baseUrl": "http://localhost:8000"
+}

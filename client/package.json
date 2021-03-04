@@ -7,7 +7,7 @@
     "test": "npm run eslint",
     "eslint": "eslint src/**/*.js",
     "start": "webpack-dev-server --history-api-fallback --inline --open",
-    "build": "npm run clear -s && webpack --progress",
+    "build": "react-scripts build",
     "clear": "del-cli dist"
   },
   "repository": {
@@ -50,6 +50,20 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
-    "use-sound": "^2.0.1"
+    "react-scripts": "^4.0.3",
+    "use-sound": "^2.0.1",
+    "web-vitals": "^1.1.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

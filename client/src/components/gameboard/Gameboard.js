@@ -20,6 +20,7 @@ const getRandomNumber = (min, max) => {
   return Math.floor(rand);
 };
 
+// eslint-disable-next-line consistent-return
 const Gameboard = () => {
   const chips = ['rock', 'paper', 'scissor'];
   const { token } = useContext(AuthContext);
@@ -45,6 +46,7 @@ const Gameboard = () => {
       playClick();
     }
     setSound(!isSound);
+    // eslint-disable-next-line no-use-before-define
     document.removeEventListener('keydown', pressSoundHandler, false);
   };
 
@@ -66,6 +68,7 @@ const Gameboard = () => {
         });
         setWintimes(data.win);
         setLosetimes(data.lose);
+        // eslint-disable-next-line no-empty
       } catch (e) {}
     },
     [token, request],
@@ -76,6 +79,7 @@ const Gameboard = () => {
       await request('/api/auth/win', 'POST', { win: winTimes, lose: loseTimes }, {
         Authorization: `Bearer ${token}`,
       });
+      // eslint-disable-next-line no-empty
     } catch (e) {}
   };
 
@@ -125,6 +129,7 @@ const Gameboard = () => {
 
   const enemyTurn = () => {
     setGameType(true);
+    // eslint-disable-next-line no-use-before-define
     document.removeEventListener('keydown', pressHandler);
     if (isSound) {
       playChoose();
@@ -153,6 +158,7 @@ const Gameboard = () => {
       playClick();
     }
     sendResult();
+    // eslint-disable-next-line no-use-before-define
     document.removeEventListener('keydown', pressRetryHandler, false);
   };
 

@@ -34,6 +34,7 @@ const AuthPage = () => {
     try {
       const data = await request('/api/auth/register', 'POST', { ...form });
       message(data.message);
+      // eslint-disable-next-line no-empty
     } catch (e) {
     }
   };
@@ -42,6 +43,7 @@ const AuthPage = () => {
     try {
       const data = await request('/api/auth/login', 'POST', { ...form });
       auth.login(data.token, data.userId);
+      // eslint-disable-next-line no-empty
     } catch (e) {
     }
   };
