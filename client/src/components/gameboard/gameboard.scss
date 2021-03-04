@@ -84,6 +84,7 @@
   top: 18% !important;
   left: 10%!important;
   box-shadow: 0 5px 4px #000000!important;
+  z-index: 100;
 }
 
 @media ($mobile-widths) {

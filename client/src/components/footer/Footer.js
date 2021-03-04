@@ -19,7 +19,7 @@ const Footer = () => {
         <div className="container">
           <div className="row">
             <div className="col l6 s12">
-              <a className="footer-logo" href="https://rs.school/js/" target="_blank"></a>
+              <a className="footer-logo" href="https://rs.school/js/" rel="noreferrer" target="_blank"></a>
             </div>
             <div className="footer-links col l4 offset-l2 s12">
               <h5 className="white-text">Links</h5>
@@ -33,7 +33,7 @@ const Footer = () => {
         </div>
         <div className="footer-copyright">
           <div className="container">
-            © 2021 <a href="https://github.com/OlegMikhailov23" target="_blank">Created by @OlegMikhailov23</a>
+            © 2021 <a href="https://github.com/OlegMikhailov23" rel="noreferrer" target="_blank">Created by @OlegMikhailov23</a>
           </div>
         </div>
       </footer>
