@@ -13,8 +13,8 @@ router.post(
     [
         check('login', 'Login must be at least 3 characters')
             .isLength({min: 3}),
-        check('password', 'Password should be min. 6 characters ')
-            .isLength({min: 6})
+        check('password', 'Password should be min. 3 characters ')
+            .isLength({min: 3})
     ],
     async (req, res) => {
         try {
